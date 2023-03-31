@@ -1,10 +1,12 @@
 package br.com.attornatus.attornatuspessoaendereco.pessoa.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
+import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ConsultaPessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ListaPessoasResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.PessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.service.PessoaService;
@@ -31,5 +33,13 @@ public class PessoaController implements PessoaAPI {
 		List<ListaPessoasResponse> pessoas = pessoaService.listaPessoas();
 		log.info("[finaliza] PessoaController - listaPessoas");
 		return pessoas;
+	}
+
+	@Override
+	public ConsultaPessoaResponse consultaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaController - consultaPessoaAtravesId");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[inicia] PessoaController - consultaPessoaAtravesId");
+		return null;
 	}
 }
