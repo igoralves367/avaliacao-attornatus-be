@@ -1,8 +1,11 @@
 package br.com.attornatus.attornatuspessoaendereco.pessoa.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
+import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ListaPessoasResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.PessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.service.PessoaService;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +23,13 @@ public class PessoaController implements PessoaAPI {
 		PessoaResponse pessoaResponse = pessoaService.criaPessoa(pessoaRequest);
 		log.info("[finaliza] PessoaController - postPessoa");
 		return pessoaResponse;
+	}
+
+	@Override
+	public List<ListaPessoasResponse> listaPessoas() {
+		log.info("[inicia] PessoaController - listaPessoas");
+		List<ListaPessoasResponse> pessoas = pessoaService.listaPessoas();
+		log.info("[finaliza] PessoaController - listaPessoas");
+		return pessoas;
 	}
 }
