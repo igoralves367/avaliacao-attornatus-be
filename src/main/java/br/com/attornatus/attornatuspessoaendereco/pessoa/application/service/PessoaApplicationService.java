@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.EditaPessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ConsultaPessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ListaPessoasResponse;
@@ -43,5 +44,11 @@ public class PessoaApplicationService implements PessoaService {
 		Pessoa pessoa = pessoaRepository.consultaPessoaAtravesId(idPessoa);
 		log.info("[finaliza] PessoaApplicationService - consultaPessoaAtravesId");
 		return new ConsultaPessoaResponse(pessoa);
+	}
+
+	@Override
+	public void editaPessoa(UUID idPessoa, EditaPessoaRequest editaPessoaRequest) {
+		log.info("[inicia] PessoaApplicationService - editaPessoa");		
+		log.info("[finaliza] PessoaApplicationService - editaPessoa");	
 	}
 }

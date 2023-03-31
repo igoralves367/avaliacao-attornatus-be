@@ -2,9 +2,7 @@ package br.com.attornatus.attornatuspessoaendereco.pessoa.application.api;
 
 import java.util.List;
 import java.util.UUID;
-
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.EditaPessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ConsultaPessoaResponse;
@@ -49,6 +47,7 @@ public class PessoaController implements PessoaAPI {
 	public void editaPessoa(UUID idPessoa, EditaPessoaRequest EditaPessoaRequest) {
 		log.info("[inicia] PessoaController - editaPessoa");
 		log.info("[idPessoa] {}", idPessoa);
+		pessoaService.editaPessoa(idPessoa, EditaPessoaRequest);
 		log.info("[inicia] PessoaController - editaPessoa");
 	}
 }
