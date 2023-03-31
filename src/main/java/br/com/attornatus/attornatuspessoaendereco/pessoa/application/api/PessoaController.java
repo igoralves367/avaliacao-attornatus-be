@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.EditaPessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ConsultaPessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ListaPessoasResponse;
@@ -42,5 +43,12 @@ public class PessoaController implements PessoaAPI {
 		ConsultaPessoaResponse consultaPessoa = pessoaService.consultaPessoaAtravesId(idPessoa);
 		log.info("[inicia] PessoaController - consultaPessoaAtravesId");
 		return consultaPessoa;
+	}
+
+	@Override
+	public void editaPessoa(UUID idPessoa, EditaPessoaRequest EditaPessoaRequest) {
+		log.info("[inicia] PessoaController - editaPessoa");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[inicia] PessoaController - editaPessoa");
 	}
 }
