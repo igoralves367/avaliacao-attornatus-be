@@ -1,5 +1,7 @@
 package br.com.attornatus.attornatuspessoaendereco.pessoa.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.repository.PessoaRepository;
@@ -18,5 +20,13 @@ public class PessoaInfraRepository implements PessoaRepository {
 		pessoaSpringDataJPARepository.save(pessoa);
 		log.info("[finaliza] PessoaInfraRepository - salva");
 		return pessoa;
+	}
+
+	@Override
+	public List<Pessoa> listaPessoas() {
+		log.info("[inicia] PessoaInfraRepository - listaPessoas");
+		List<Pessoa> todasPessoas = pessoaSpringDataJPARepository.findAll();
+		log.info("[inicia] PessoaInfraRepository - listaPessoas");
+		return todasPessoas;
 	}
 }

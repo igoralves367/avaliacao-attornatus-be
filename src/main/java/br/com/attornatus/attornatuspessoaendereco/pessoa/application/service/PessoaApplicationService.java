@@ -32,6 +32,6 @@ public class PessoaApplicationService implements PessoaService {
 		log.info("[inicia] PessoaApplicationService - listaPessoas");
 		List<Pessoa> pessoas = pessoaRepository.listaPessoas();
 		log.info("[finaliza] PessoaApplicationService - listaPessoas");
-		return ListaPessoasResponse.converte(pessoas);;
+		return ListaPessoasResponse.converte(pessoas);
 	}
 }
