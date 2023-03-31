@@ -49,6 +49,9 @@ public class PessoaApplicationService implements PessoaService {
 	@Override
 	public void editaPessoa(UUID idPessoa, EditaPessoaRequest editaPessoaRequest) {
 		log.info("[inicia] PessoaApplicationService - editaPessoa");		
+		Pessoa pessoa = pessoaRepository.consultaPessoaAtravesId(idPessoa);
+		pessoa.edita(editaPessoaRequest);
+		pessoaRepository.salva(pessoa);
 		log.info("[finaliza] PessoaApplicationService - editaPessoa");	
 	}
 }
