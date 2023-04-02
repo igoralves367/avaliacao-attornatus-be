@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.attornatus.attornatuspessoaendereco.endereco.application.repository.EnderecoRepository;
 import br.com.attornatus.attornatuspessoaendereco.endereco.domain.entities.Endereco;
+import br.com.attornatus.attornatuspessoaendereco.endereco.domain.enums.TipoEndereco;
 import br.com.attornatus.attornatuspessoaendereco.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -36,5 +37,13 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 		List<Endereco> todosEnderecos = enderecoSpringDataJPARepository.findAll();
 		log.info("[finaliza] EnderecoInfraRepository - buscarEnderecosDaPessoa");
 		return todosEnderecos;
+	}
+
+	@Override
+	public Endereco findEnderecoPrincipal(UUID idPessoa, TipoEndereco principal) {
+		log.info("[inicia] EnderecoInfraRepository - findEnderecoPrincipal");
+	    Endereco endereco = enderecoSpringDataJPARepository.findByIdPessoaCadastroAndTipoEndereco(idPessoa, principal);
+	    log.info("[finaliza] EnderecoInfraRepository - findEnderecoPrincipal");
+	    return endereco;
 	}
 }

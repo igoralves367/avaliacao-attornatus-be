@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.attornatus.attornatuspessoaendereco.endereco.application.repository.EnderecoRepository;
+import br.com.attornatus.attornatuspessoaendereco.endereco.domain.entities.Endereco;
+import br.com.attornatus.attornatuspessoaendereco.endereco.domain.enums.TipoEndereco;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.EditaPessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ConsultaPessoaResponse;
@@ -19,6 +22,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class PessoaApplicationService implements PessoaService {
 	private final PessoaRepository pessoaRepository;
+	private final EnderecoRepository enderecoRepository; 
 
 	@Override
 	public PessoaResponse criaPessoa(PessoaRequest pessoaRequest) {
@@ -42,8 +46,9 @@ public class PessoaApplicationService implements PessoaService {
 	public ConsultaPessoaResponse consultaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaApplicationService - consultaPessoaAtravesId");
 		Pessoa pessoa = pessoaRepository.consultaPessoaAtravesId(idPessoa);
+		Endereco enderecoPrincipal = enderecoRepository.findEnderecoPrincipal(idPessoa, TipoEndereco.PRINCIPAL);
 		log.info("[finaliza] PessoaApplicationService - consultaPessoaAtravesId");
-		return new ConsultaPessoaResponse(pessoa);
+		return new ConsultaPessoaResponse(pessoa, enderecoPrincipal);
 	}
 
 	@Override

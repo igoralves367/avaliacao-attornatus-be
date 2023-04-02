@@ -38,7 +38,7 @@ public class Endereco {
 	@NotBlank
 	private String cidade;
 	@NotNull
-	private TipoEndereco tipoEndereco;
+	private TipoEndereco tipoEndereco = TipoEndereco.PRINCIPAL;
 	
 	private LocalDateTime dataHoraDoCadastro;
 	

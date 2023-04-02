@@ -16,5 +16,5 @@ public class EnderecoRequest {
 	@NotBlank
 	private String cidade;
 	@NotNull
-	private TipoEndereco tipoEndereco;
+	private TipoEndereco tipoEndereco = TipoEndereco.PRINCIPAL;
 }
