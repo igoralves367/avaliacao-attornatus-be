@@ -14,12 +14,14 @@ import javax.validation.constraints.NotNull;
 import br.com.attornatus.attornatuspessoaendereco.endereco.application.api.requests.EnderecoRequest;
 import br.com.attornatus.attornatuspessoaendereco.endereco.domain.enums.TipoEndereco;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Entity
+@Data
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
