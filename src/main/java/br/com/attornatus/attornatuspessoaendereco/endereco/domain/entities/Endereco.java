@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.attornatus.attornatuspessoaendereco.endereco.application.api.requests.EnderecoRequest;
 import br.com.attornatus.attornatuspessoaendereco.endereco.domain.enums.TipoEndereco;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -39,4 +40,14 @@ public class Endereco {
 	private TipoEndereco tipoEndereco;
 	
 	private LocalDateTime dataHoraDoCadastro;
+	
+	public Endereco(UUID idPessoa, EnderecoRequest enderecoRequest) {
+		this.idPessoaCadastro = idPessoa;
+		this.lagradouro = enderecoRequest.getLagradouro();
+		this.cep = enderecoRequest.getCep();
+		this.numero = enderecoRequest.getNumero();
+		this.cidade = enderecoRequest.getCidade();
+		this.tipoEndereco = enderecoRequest.getTipoEndereco();
+		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
 }
