@@ -48,4 +48,8 @@ public class Pessoa {
 		this.dataNascimento = editaPessoaRequest.getDataNascimento();
 		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 	}
+
+	public Pessoa(String string) {
+		this.nomeCompleto = string;
+	}
 }

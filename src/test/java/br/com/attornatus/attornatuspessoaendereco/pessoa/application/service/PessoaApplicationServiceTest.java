@@ -5,15 +5,21 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import br.com.attornatus.attornatuspessoaendereco.endereco.application.repository.EnderecoRepository;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
+import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.ListaPessoasResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.responses.PessoaResponse;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.repository.PessoaRepository;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.domain.Pessoa;
@@ -41,5 +47,20 @@ class PessoaApplicationServiceTest {
 
         verify(pessoaRepository).salva(any(Pessoa.class));
         assertEquals(pessoaId, pessoaResponse.getIdPessoa());
+    }
+    
+    @Test
+    public void testListaPessoas() {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Igor Alves"));
+        pessoas.add(new Pessoa("Ester Alves"));
+
+        when(pessoaRepository.listaPessoas()).thenReturn(pessoas);
+
+        List<ListaPessoasResponse> listaPessoasResponse = pessoaApplicationService.listaPessoas();
+
+        assertEquals(pessoas.size(), listaPessoasResponse.size());
+        assertEquals(pessoas.get(0).getNomeCompleto(), listaPessoasResponse.get(0).getNomeCompleto());
+        assertEquals(pessoas.get(1).getNomeCompleto(), listaPessoasResponse.get(1).getNomeCompleto());
     }
 }
