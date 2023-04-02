@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "c44b8c36-bbda-49d4-b423-cef5982b74f4",
+		"name": "Attornatus LOCAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23094206"
+	},
+	"item": [
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "Listar todas as Pessoas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/pessoa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Pessoa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resposta = pm.response.json();\r",
+									"pm.globals.set(\"idPessoa\", resposta.idPessoa);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"Igor Alves\",\n  \"dataNascimento\": \"1997-03-06\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/pessoa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar uma Pessoa pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/pessoa/{{idPessoa}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"pessoa",
+								"{{idPessoa}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar uma Pessoa pelo Id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"Igor Alves de Jesus\",\n  \"dataNascimento\": \"1998-04-06\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/pessoa/{{idPessoa}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"pessoa",
+								"{{idPessoa}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endereço",
+			"item": [
+				{
+					"name": "SECUNDARIO Cadastrar Endereco da Pessoa pelo Id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n  \"lagradouro\": \"Rua Zelia Gattia\",\n  \"cep\": \"45820075\",\n  \"numero\": \"64e\",\n  \"cidade\": \"Eunapolis\",\n  \"tipoEndereco\": \"SECUNDARIO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/endereco/{{idPessoa}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"endereco",
+								"{{idPessoa}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PRINCIPAL Cadastrar Endereco da Pessoa pelo Id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n  \"lagradouro\": \"Avenida Gorvenador Valadares\",\n  \"cep\": \"45828280\",\n  \"numero\": \"308B\",\n  \"cidade\": \"Eunapolis\",\n  \"tipoEndereco\": \"PRINCIPAL\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/endereco/{{idPessoa}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"endereco",
+								"{{idPessoa}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Endereco da Pessoa pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/pessoa-endereco/api/v1/endereco/{{idPessoa}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa-endereco",
+								"api",
+								"v1",
+								"endereco",
+								"{{idPessoa}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
