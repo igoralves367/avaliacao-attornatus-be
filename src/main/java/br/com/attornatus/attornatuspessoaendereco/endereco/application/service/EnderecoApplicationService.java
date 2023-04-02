@@ -33,7 +33,9 @@ public class EnderecoApplicationService implements EnderecoService {
 	@Override
 	public List<ListaEnderecosResponse> listaEnderecosDaPessoa(UUID idPessoa) {
 		log.info("[inicia] EnderecoApplicationService - listaEnderecosDaPessoa");
+		pessoaService.consultaPessoaAtravesId(idPessoa);
+		List<Endereco> enderecos = enderecoRepository.listaEnderecosDaPessoa(idPessoa);
 		log.info("[finaliza] EnderecoApplicationService - listaEnderecosDaPessoa");
-		return null;
+		return ListaEnderecosResponse.converte(enderecos);
 	}
 }
