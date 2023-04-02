@@ -3,6 +3,7 @@ package br.com.attornatus.attornatuspessoaendereco.pessoa.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +11,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.EditaPessoaRequest;
 import br.com.attornatus.attornatuspessoaendereco.pessoa.application.api.requests.PessoaRequest;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Entity
+@Data
 public class Pessoa {
 	
 	@Id
