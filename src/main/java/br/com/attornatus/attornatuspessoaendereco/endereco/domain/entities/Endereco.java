@@ -29,6 +29,7 @@ public class Endereco {
 	@Column(columnDefinition = "uuid", name = "idPessoa", nullable = false)
 	private UUID idPessoaCadastro;
 	@NotBlank
+	@Column(unique = true) 
 	private String lagradouro;
 	@NotBlank
 	private String cep;
