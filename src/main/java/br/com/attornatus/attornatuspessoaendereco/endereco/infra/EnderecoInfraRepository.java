@@ -33,9 +33,9 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 
 	@Override
 	public List<Endereco> listaEnderecosDaPessoa(UUID idPessoa) {
-		log.info("[inicia] EnderecoInfraRepository - buscarEnderecosDaPessoa");
+		log.info("[inicia] EnderecoInfraRepository - listaEnderecosDaPessoa");
 		List<Endereco> todosEnderecos = enderecoSpringDataJPARepository.findAll();
-		log.info("[finaliza] EnderecoInfraRepository - buscarEnderecosDaPessoa");
+		log.info("[finaliza] EnderecoInfraRepository - listaEnderecosDaPessoa");
 		return todosEnderecos;
 	}
 
